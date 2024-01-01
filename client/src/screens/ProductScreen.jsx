@@ -9,6 +9,7 @@ const ProductScreen = () => {
       try {
         const {data} = await axios.get(`/api/product/${id}`)
         setProduct(data.product)
+        console.log(data.product)
         console.log(data)
       } catch (error) {
         console.log("Error in fetching product", error);

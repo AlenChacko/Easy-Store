@@ -1,5 +1,6 @@
 export const products = [
   {
+    id: 1,
     name: "Airpods Wireless Bluetooth Headphones",
     image: "/images/airpods.jpg",
     description:
@@ -12,6 +13,7 @@ export const products = [
     numReviews: 0,
   },
   {
+    id: 2,
     name: "Smartphone X1",
     image: "/images/smartphone-x1.jpg",
     description:
@@ -24,6 +26,7 @@ export const products = [
     numReviews: 8,
   },
   {
+    id: 3,
     name: "Laptop ProBook",
     image: "/images/laptop-probook.jpg",
     description:
@@ -36,6 +39,7 @@ export const products = [
     numReviews: 5,
   },
   {
+    id: 4,
     name: "Wireless Headphones",
     image: "/images/headphones.jpg",
     description:
@@ -48,6 +52,7 @@ export const products = [
     numReviews: 12,
   },
   {
+    id: 5,
     name: "Smart TV 4K",
     image: "/images/smart-tv-4k.jpg",
     description:
@@ -60,6 +65,7 @@ export const products = [
     numReviews: 9,
   },
   {
+    id: 6,
     name: "Gaming Console",
     image: "/images/gaming-console.jpg",
     description:
@@ -71,4 +77,4 @@ export const products = [
     rating: 4.2,
     numReviews: 6,
   },
-];
+]
