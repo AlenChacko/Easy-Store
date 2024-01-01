@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { products } from "../data/products";
-
+import axios from "axios";
 const ProductScreen = () => {
+  const [product,setProduct] =useState({})
   const { id } = useParams();
-  const product = products.find((product) => product.id == id);
+  useEffect(()=>{
+    const fetchProduct =async ()=>{
+      try {
+        const {data} = await axios.get(`/api/product/${id}`)
+        setProduct(data.product)
+        console.log(data)
+      } catch (error) {
+        console.log("Error in fetching product", error);
+      }
+    }
+    fetchProduct()
+  },[id])
   return (
     <div className="container mx-auto mt-8 p-4">
       <Link to={"/"}>
