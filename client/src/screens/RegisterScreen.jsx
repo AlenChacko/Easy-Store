@@ -7,12 +7,12 @@ const RegisterScreen = () => {
       <h2 className="text-2xl font-semibold mb-4">Register</h2>
       <form>
         <div className="mb-4">
-          <label htmlFor="name" className="text-gray-700">
+          <label htmlFor="firstName" className="text-gray-700">
             FirstName:
           </label>
           <input
-            type="name"
-            id="name"
+            type="text"
+            id="firstName"
             className="bg-white border border-gray-300 p-2 rounded-md mt-2 w-full"
           />
         </div>
@@ -21,8 +21,8 @@ const RegisterScreen = () => {
             LastName:
           </label>
           <input
-            type="name"
-            id="name"
+            type="text"
+            id="lastName"
             className="bg-white border border-gray-300 p-2 rounded-md mt-2 w-full"
           />
         </div>
