@@ -6,6 +6,7 @@ import cors from 'cors'
 
 import productRoute from "./routes/productRoute.js";
 import { connectDatabase } from "./database/db.js";
+import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
 connectDatabase()
@@ -26,6 +27,10 @@ app.use(morgan("dev"));
 app.use(helmet());
 
 app.use('/api',productRoute)
+
+
+app.use(notFound)
+app.use(errorHandler)
 
 const server = () => {
   app.listen(port, () => {
