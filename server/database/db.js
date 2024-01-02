@@ -1,12 +1,14 @@
-import mongoose from "mongoose";
-import handler from "express-async-handler";
+import mongoose from "mongoose"
 
-export const connectDatabase = handler(async () => {
+const connectDatabase = async () => {
   try {
-    const connectDB = await mongoose.connect(process.env.MONGO_URI);
-    console.log(`database connected:${connectDB.connection.host}`);
+    const conn = await mongoose.connect(process.env.MONGO_URI)
+
+    console.log(`MongoDB Connected: ${conn.connection.host}`)
   } catch (error) {
-    console.log(`database disconnected:${error}`);
-    process.exit(1);
+    console.error(`Error: ${error.message}`)
+    process.exit(1)
   }
-});
+}
+
+export  {connectDatabase}

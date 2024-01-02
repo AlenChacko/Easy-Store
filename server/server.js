@@ -26,7 +26,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(morgan("dev"));
 app.use(helmet());
 
-app.use('/api',productRoute)
+app.use('/api/products',productRoute)
 
 
 app.use(notFound)
