@@ -8,6 +8,7 @@ import productRoute from "./routes/productRoute.js";
 import userRoute from "./routes/userRoute.js";
 import { connectDatabase } from "./database/db.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 connectDatabase()
@@ -26,6 +27,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(morgan("dev"));
 app.use(helmet());
+app.use(cookieParser())
 
 app.use('/api/products',productRoute)
 app.use("/api/users", userRoute)
