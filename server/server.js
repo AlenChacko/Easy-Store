@@ -5,6 +5,7 @@ import morgan from "morgan";
 import cors from 'cors'
 
 import productRoute from "./routes/productRoute.js";
+import userRoute from "./routes/userRoute.js";
 import { connectDatabase } from "./database/db.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 
@@ -27,6 +28,7 @@ app.use(morgan("dev"));
 app.use(helmet());
 
 app.use('/api/products',productRoute)
+app.use("/api/users", userRoute)
 
 
 app.use(notFound)

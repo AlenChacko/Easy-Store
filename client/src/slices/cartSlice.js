@@ -5,9 +5,9 @@ const initialState = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
   : { cartItems: [] };
 
-  const addDecimals = (num)=>{
-    return(Math.round(num*100)/100).toFixed(2)
-  }
+const addDecimals = (num) => {
+  return (Math.round(num * 100) / 100).toFixed(2);
+};
 
 const cartSlice = createSlice({
   name: "cart",
@@ -23,18 +23,17 @@ const cartSlice = createSlice({
       } else {
         state.cartItems = [...state.cartItems, item];
       }
-      return updateCart(state)
-      
+      return updateCart(state);
     },
     removeFromCart: (state, action) => {
-      const id = action.payload
-      state.cartItems = state.cartItems.filter(item => item._id !== id)
+      const id = action.payload;
+      state.cartItems = state.cartItems.filter((item) => item._id !== id);
 
-      return updateCart(state)
+      return updateCart(state);
     },
   },
 });
 
-export const { addToCart,removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
