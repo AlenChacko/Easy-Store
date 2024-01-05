@@ -15,6 +15,7 @@ import RegisterScreen from "./screens/RegisterScreen.jsx";
 import { Provider } from 'react-redux'
 import store from "./store.js";
 import CartScreen from "./screens/CartScreen.jsx";
+import ResetPassword from "./screens/ResetPassword.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="/product/:id" element={<ProductScreen />} />
       <Route path="/cart" element={<CartScreen />} />
       <Route path="/login" element={<LoginScreen />} />
+      <Route path='/reset-password/:resetToken' element={<ResetPassword />} />
     </Route>
   )
 );
