@@ -24,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="/product/:id" element={<ProductScreen />} />
       <Route path="/cart" element={<CartScreen />} />
       <Route path="/login" element={<LoginScreen />} />
+      <Route path='/register' element={<RegisterScreen />} />
       <Route path='/reset-password/:resetToken' element={<ResetPassword />} />
     </Route>
   )
