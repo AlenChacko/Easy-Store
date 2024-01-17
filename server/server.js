@@ -7,6 +7,7 @@ import cors from 'cors'
 import productRoute from "./routes/productRoute.js";
 import userRoute from "./routes/userRoute.js";
 import authRoutes from "./routes/authRoutes.js"
+import orderRoute from './routes/orderRoute.js'
 import { connectDatabase } from "./database/db.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import passportUtil from "./utils/passport.js";
@@ -41,6 +42,7 @@ passportUtil(app)
 app.use('/api/products',productRoute)
 app.use("/api/users", userRoute)
 app.use("/auth", authRoutes)
+app.use('/api/orders',orderRoute)
 
 
 app.use(notFound)

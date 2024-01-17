@@ -17,6 +17,9 @@ import store from "./store.js";
 import CartScreen from "./screens/CartScreen.jsx";
 import ResetPassword from "./screens/ResetPassword.jsx";
 import ShippingScreen from "./screens/ShippingScreen.jsx";
+import PaymentScreen from "./screens/PaymentScreen.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,7 +30,11 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
       <Route path='/reset-password/:resetToken' element={<ResetPassword />} />
-      <Route path='/shipping' element={<ShippingScreen />} />
+      <Route path="" element={<PrivateRoute />} >
+        <Route path='/payment' element={<PaymentScreen />} />
+        <Route path='/shipping' element={<ShippingScreen />} />
+        <Route path='/place-order' element={<PlaceOrderScreen />} />
+      </Route>
     </Route>
   )
 );

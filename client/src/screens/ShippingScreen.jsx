@@ -15,6 +15,7 @@ export default function ShippingScreen() {
     const handleSubmit = e => {
         e.preventDefault()
         dispatch(saveShippingAddress({ address, city, postalCode, country }))
+        navigate('/payment')
     }
     return (
         <div className="container mx-auto mt-8 mb-28 p-4 max-w-md ">
