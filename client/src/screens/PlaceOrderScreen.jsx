@@ -10,7 +10,6 @@ export default function PlaceOrderScreen() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { userInfo } = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart);
 
   const {
@@ -38,7 +37,7 @@ export default function PlaceOrderScreen() {
       }).unwrap();
       dispatch(clearCartItems());
       toast.success("Order Placed!");
-      // navigate(`/order/${res._id}`)
+      navigate(`/order/${res._id}`)
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -51,7 +50,7 @@ export default function PlaceOrderScreen() {
         <div className="mb-4">
           <h3 className="text-lg font-semibold mb-2">Shipping Address:</h3>
           <p>
-            {userInfo?.name}, {address}, {city}, {postalCode}, {country}
+            {address}, {city}, {postalCode}, {country}
           </p>
         </div>
         <div className="mb-4">

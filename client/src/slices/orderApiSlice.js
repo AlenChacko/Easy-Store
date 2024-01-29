@@ -10,18 +10,18 @@ export const orderApiSlice = apiSlice.injectEndpoints({
         body: order,
       }),
     }),
-    // getOrderDetails: builder.query({
-    //   query: id => ({
-    //     url: `${ORDERS_URL}/${id}`,
-    //   }),
-    //   keepUnusedDataFor: 5,
-    // }),
-    // getUserOrders: builder.query({
-    //   query: () => ({
-    //     url: `${ORDERS_URL}/user-orders`,
-    //   }),
-    //   keepUnusedDataFor: 5,
-    // }),
+    getOrderDetails: builder.query({
+      query: id => ({
+        url: `${ORDERS_URL}/${id}`,
+      }),
+      keepUnusedDataFor: 5,
+    }),
+    getUserOrders: builder.query({
+      query: () => ({
+        url: `${ORDERS_URL}/user-orders`,
+      }),
+      keepUnusedDataFor: 5,
+    }),
     // payWithStripe: builder.mutation({
     //   query: orderItems => ({
     //     url: `${BACKEND_URL}/create-checkout-session`,
@@ -34,7 +34,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useCreateOrderMutation,
-  // useGetOrderDetailsQuery,
-  // useGetUserOrdersQuery,
+  useGetOrderDetailsQuery,
+  useGetUserOrdersQuery,
   // usePayWithStripeMutation,
 } = orderApiSlice;
