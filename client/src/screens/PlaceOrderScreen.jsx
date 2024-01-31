@@ -37,7 +37,7 @@ export default function PlaceOrderScreen() {
       }).unwrap();
       dispatch(clearCartItems());
       toast.success("Order Placed!");
-      navigate(`/order/${res._id}`)
+      navigate(`/order/${res._id}`);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -79,6 +79,16 @@ export default function PlaceOrderScreen() {
                 </th>
               </tr>
             ))}
+            <tr className="border-b border-gray-400">
+              <td className="text-left font-semibold">Shipping</td>
+              <td className="text-right"></td>
+              <td className="text-right">${shippingPrice}</td>
+            </tr>
+            <tr className="border-b border-gray-400">
+              <td className="text-left font-semibold">Tax</td>
+              <td className="text-right"></td>
+              <td className="text-right">${taxPrice}</td>
+            </tr>
           </tbody>
         </table>
         <div className="mt-4">

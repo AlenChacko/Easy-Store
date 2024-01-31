@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetOrderDetailsQuery,usePayWithStripeMutation } from '../slices/orderApiSlice'
+import { useDeliverOrderMutation, useGetOrderDetailsQuery,usePayWithStripeMutation } from '../slices/orderApiSlice'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
@@ -12,7 +12,7 @@ export default function OrderScreen() {
     const { data: order, isLoading, error, refetch } = useGetOrderDetailsQuery(orderId)
 
     const [payWithStripe, { isLoading: loadingStripe }] = usePayWithStripeMutation()
-    // const [deliverOrder, { isLoading: loadingDeliver }] = useDeliverOrderMutation()
+    const [deliverOrder, { isLoading: loadingDeliver }] = useDeliverOrderMutation()
 
     if (error) {
         return toast.error(error.message)
@@ -38,10 +38,10 @@ export default function OrderScreen() {
         }
     }
 
-    // const deliverOrderHandler = async (orderId) => {
-    //     await deliverOrder(orderId)
-    //     refetch()
-    // }
+    const deliverOrderHandler = async (orderId) => {
+        await deliverOrder(orderId)
+        refetch()
+    }
 
     return (
         <div className="flex flex-col md:flex-row justify-center items-start">
@@ -105,7 +105,7 @@ export default function OrderScreen() {
                 </button>
                 {userInfo.isAdmin && !order.isDelivered && <button
                     className="bg-gray-800 text-white px-4 py-2 rounded-md mt-4 hover:bg-gray-950"
-                    // onClick={() => deliverOrderHandler(orderId)}
+                    onClick={() => deliverOrderHandler(orderId)}
                 >
                     Mark as Delivered
                 </button>}
