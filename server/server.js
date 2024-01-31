@@ -12,6 +12,7 @@ import { connectDatabase } from "./database/db.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import passportUtil from "./utils/passport.js";
 import cookieParser from "cookie-parser";
+import stripe from "./utils/stripe.js"
 
 dotenv.config();
 connectDatabase()
@@ -37,6 +38,7 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cookieParser())
 
+stripe(app)
 passportUtil(app)
 
 app.use('/api/products',productRoute)
