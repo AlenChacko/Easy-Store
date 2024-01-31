@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetOrderDetailsQuery } from '../slices/orderApiSlice'
+import { useGetOrderDetailsQuery,usePayWithStripeMutation } from '../slices/orderApiSlice'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
@@ -11,7 +11,7 @@ export default function OrderScreen() {
     const { userInfo } = useSelector(state => state.user)
     const { data: order, isLoading, error, refetch } = useGetOrderDetailsQuery(orderId)
 
-    // const [payWithStripe, { isLoading: loadingStripe }] = usePayWithStripeMutation()
+    const [payWithStripe, { isLoading: loadingStripe }] = usePayWithStripeMutation()
     // const [deliverOrder, { isLoading: loadingDeliver }] = useDeliverOrderMutation()
 
     if (error) {
@@ -29,14 +29,14 @@ export default function OrderScreen() {
         return orderItems.reduce((acc, item) => acc + (item.price * item.qty), 0)
     }
 
-    // const handleStripePayment = async (orderItems) => {
-    //     try {
-    //         const res = await payWithStripe(orderItems).unwrap()
-    //         window.location.href = res.url
-    //     } catch (error) {
-    //         toast.error(error?.data?.message || error?.error)
-    //     }
-    // }
+    const handleStripePayment = async (orderItems) => {
+        try {
+            const res = await payWithStripe(orderItems).unwrap()
+            window.location.href = res.url
+        } catch (error) {
+            toast.error(error?.data?.message || error?.error)
+        }
+    }
 
     // const deliverOrderHandler = async (orderId) => {
     //     await deliverOrder(orderId)
@@ -99,7 +99,7 @@ export default function OrderScreen() {
                 </div>
                 <button
                     className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-blue-600 mr-3"
-                    // onClick={() => handleStripePayment(orderItems)}
+                    onClick={() => handleStripePayment(orderItems)}
                 >
                     Pay with Stripe
                 </button>
@@ -109,7 +109,7 @@ export default function OrderScreen() {
                 >
                     Mark as Delivered
                 </button>}
-                {/* {loadingStripe && <Spinner />} */}
+                {loadingStripe && <Spinner />}
             </div>
         </div >
     )

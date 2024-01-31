@@ -22,13 +22,13 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
     }),
-    // payWithStripe: builder.mutation({
-    //   query: orderItems => ({
-    //     url: `${BACKEND_URL}/create-checkout-session`,
-    //     method: "POST",
-    //     body: orderItems,
-    //   }),
-    // }),
+    payWithStripe: builder.mutation({
+      query: orderItems => ({
+        url: `${BACKEND_URL}/create-checkout-session`,
+        method: "POST",
+        body: orderItems,
+      }),
+    }),
   }),
 });
 
@@ -36,5 +36,5 @@ export const {
   useCreateOrderMutation,
   useGetOrderDetailsQuery,
   useGetUserOrdersQuery,
-  // usePayWithStripeMutation,
+  usePayWithStripeMutation,
 } = orderApiSlice;

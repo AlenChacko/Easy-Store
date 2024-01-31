@@ -12,16 +12,22 @@ import HomeScreen from "./screens/HomeScreen.jsx";
 import ProductScreen from "./screens/ProductScreen.jsx";
 import LoginScreen from "./screens/LoginScreen.jsx";
 import RegisterScreen from "./screens/RegisterScreen.jsx";
-import { Provider } from 'react-redux'
+import { Provider } from "react-redux";
 import store from "./store.js";
 import CartScreen from "./screens/CartScreen.jsx";
 import ResetPassword from "./screens/ResetPassword.jsx";
 import ShippingScreen from "./screens/ShippingScreen.jsx";
 import PaymentScreen from "./screens/PaymentScreen.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import AdminRoute from "./components/AdminRoute.jsx";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen.jsx";
 import OrderScreen from "./screens/OrderScreen.jsx";
 import ProfileScreen from "./screens/ProfileScreen.jsx";
+import SuccessScreen from "./screens/SuccessScreen.jsx";
+import UserListScreen from "./screens/admin/UserListScreen.jsx";
+import ProductListScreen from "./screens/admin/ProductListScreen.jsx";
+import OrderListScreen from "./screens/admin/OrderListScreen.jsx";
+import ProductEditScreen from "./screens/admin/ProductEditScreen.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,14 +36,21 @@ const router = createBrowserRouter(
       <Route path="/product/:id" element={<ProductScreen />} />
       <Route path="/cart" element={<CartScreen />} />
       <Route path="/login" element={<LoginScreen />} />
-      <Route path='/register' element={<RegisterScreen />} />
-      <Route path='/reset-password/:resetToken' element={<ResetPassword />} />
-      <Route path="" element={<PrivateRoute />} >
-        <Route path='/payment' element={<PaymentScreen />} />
-        <Route path='/shipping' element={<ShippingScreen />} />
-        <Route path='/place-order' element={<PlaceOrderScreen />} />
-        <Route path='/order/:id' element={<OrderScreen />} />
-        <Route path='/profile' element={<ProfileScreen />} />
+      <Route path="/register" element={<RegisterScreen />} />
+      <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/payment" element={<PaymentScreen />} />
+        <Route path="/shipping" element={<ShippingScreen />} />
+        <Route path="/place-order" element={<PlaceOrderScreen />} />
+        <Route path="/order/:id" element={<OrderScreen />} />
+        <Route path="/profile" element={<ProfileScreen />} />
+        <Route path="/success-screen" element={<SuccessScreen />} />
+      </Route>
+      <Route path="" element={<AdminRoute />}>
+        <Route path="/admin/users" element={<UserListScreen />} />
+        <Route path="/admin/products" element={<ProductListScreen />} />
+        <Route path="/admin/orders" element={<OrderListScreen />} />
+        <Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />
       </Route>
     </Route>
   )
@@ -46,5 +59,5 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <RouterProvider router={router} />
-  </Provider >
+  </Provider>
 );
